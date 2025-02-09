@@ -2,7 +2,11 @@ const submitButton = document.getElementById('create') as HTMLButtonElement | nu
 if (submitButton) {
     submitButton.addEventListener('click', async () => {
         const fontfile = document.getElementById('fontfile') as HTMLInputElement | null;
-        const file = fontfile!.files![0];
+        if (!fontfile || !fontfile.files || fontfile.files.length === 0) {
+            console.error('No file selected');
+            return;
+        }
+        const file = fontfile.files[0];
         const fontfilebase64 = btoa(String.fromCharCode(...new Uint8Array(await file.arrayBuffer())));
         const fontNameInput = document.getElementById('fontname') as HTMLInputElement | null;
         const setNameInput = document.getElementById('setname') as HTMLInputElement | null;
