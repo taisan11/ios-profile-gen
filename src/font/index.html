@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Gen - iOS Profile Generator</title>
+  </head>
+  <body>
+    <a href="/">topに戻る</a>
+    <h1>Font Gen</h1>
+    <p>指定したフォントをiOSにインストールすることができます。</p>
+    <p>インストールしたら設定->一般->VPNとデバイス管理からインストールして<br>設定->一般->フォント辺りから適用することができます。</p>
+    <h3>作成する。</h3>
+    <label for="fontname">フォント名:</label>
+    <input type="text" id="fontname" placeholder="フォント名" required /><br>
+    <label for="setname">プロファイル名:</label>
+    <input type="text" id="setname" placeholder="プロファイル名" required /><br>
+    <label for="fontfile">フォントファイル:</label>
+    <input type="file" id="fontfile" required /><br>
+    <button type="submit" id="create">作成!!</button>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
