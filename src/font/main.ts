@@ -7,7 +7,8 @@ if (submitButton) {
             return;
         }
         const file = fontfile.files[0];
-        const fontfilebase64 = btoa(String.fromCharCode(...new Uint8Array(await file.arrayBuffer())));
+        const buffer = await file.bytes();
+        const fontfilebase64 = btoa(String.fromCharCode(...buffer));
         const fontNameInput = document.getElementById('fontname') as HTMLInputElement | null;
         const setNameInput = document.getElementById('setname') as HTMLInputElement | null;
         const fontName = fontNameInput ? fontNameInput.value : 'Font.ttf';
