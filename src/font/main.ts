@@ -3,7 +3,7 @@ if (submitButton) {
     submitButton.addEventListener('click', async () => {
         const fontfile = document.getElementById('fontfile') as HTMLInputElement | null;
         const file = fontfile!.files![0];
-        const fontfilebase64 = btoa(await file.text());
+        const fontfilebase64 = btoa(String.fromCharCode(...new Uint8Array(await file.arrayBuffer())));
         const fontNameInput = document.getElementById('fontname') as HTMLInputElement | null;
         const setNameInput = document.getElementById('setname') as HTMLInputElement | null;
         const fontName = fontNameInput ? fontNameInput.value : 'Font.ttf';
@@ -20,8 +20,7 @@ if (submitButton) {
             <key>Name</key>
             <string>${fontName}</string>
             <key>PayloadIdentifier</key>
-            ${/* PayloadIdentifier must be unique */ ''}
-            <string>com.example.myfontpayload</string>
+            <string>dev.pages.ios-profile-gen.fontpayload.${fontName}</string>
             <key>PayloadType</key>
             <string>com.apple.font</string>
             <key>PayloadUUID</key>
@@ -34,7 +33,7 @@ if (submitButton) {
     <string>${setName}</string>
     <key>PayloadIdentifier</key>
     ${/* PayloadIdentifier must be unique */ ''}
-    <string>com.example.myprofile</string>
+    <string>dev.pages.ios-profile-gen.fontprofile.${fontName}</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
